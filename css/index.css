@@ -147,3 +147,8 @@
 .windspeed p {
   margin-bottom: -.2em;
 }
+.error{
+  text-align: center; 
+  background-color: red; 
+  color: white
+}
