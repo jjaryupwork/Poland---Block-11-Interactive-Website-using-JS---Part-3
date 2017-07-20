@@ -3,7 +3,6 @@ var geolocationSuccessHandler = function(position) {
 };
 
 var geolocationErrorHandler = function() {
-    alert('You dont allow to use geolocation');
     loadWeather("Cracow, PL", 'c');
 }
 
@@ -44,6 +43,7 @@ function loadWeather(location, woeid) {
 
         error: function(error) {
             $(".error").html('<p>' + error + '</p>');
+            alert('You dont allow to use geolocation');
         }
     });
 }
