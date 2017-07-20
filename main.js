@@ -1,24 +1,23 @@
+var geolocationSuccessHandler =   function(position) {
+                loadWeather(position.coords.latitude + ',' + position.coords.longitude);
+};     
+
+var geolocationErrorHandler = function() {
+                alert('You dont allow to use geolocation');
+                loadWeather("Cracow, PL", 'c');
+}     
 function getWeather() {
-  if ('geolocation' in navigator) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      loadWeather(position.coords.latitude + ',' + position.coords.longitude);
-      function error(error) {
-  alert('msg');}
-      
-
-     }); 
-
-  }
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(geolocationSuccessHandler,
+            geolocationErrorHandler );
+    } else {
+       loadWeather("Warsaw, PL", 'c');
+    }
 }
 
 
-  // else {
-  //  loadWeather("Warsaw, PL", '');
- // }
-
-
 $(document).ready(function () {
-  setInterval(getWeather, 10000);
+  setInterval(getWeather, 3600000);
   getWeather();
 });
 
